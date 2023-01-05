@@ -11,6 +11,9 @@ const helmet = require("helmet");
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
+
+//----- Routes
+app.use(require("./routes/stockData"));
  
 //----- Connection
 app.listen(port, () => {
