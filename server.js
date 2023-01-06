@@ -19,6 +19,7 @@ app.use(helmet());
 
 //----- Routes
 app.use(require("./routes/stockData"));
+app.use(require("./routes/chartStock"));
 
 //----- Socket events
 io.on("connection", socket => {
