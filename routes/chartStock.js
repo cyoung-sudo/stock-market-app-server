@@ -37,6 +37,16 @@ chartStockRoutes.route("/api/chartStock")
       message: "Duplicate stock"
     })
   });
+})
+//----- Delete an existing chart-stock
+.delete((req, res) => {
+  ChartStock.findOneAndDelete({
+    ticker: req.body.ticker
+  })
+  .then(deleteDoc => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
 });
 
 module.exports = chartStockRoutes;
