@@ -24,6 +24,11 @@ app.use(require("./routes/chartStock"));
 //----- Socket events
 io.on("connection", socket => {
   console.log(`New connected: ${socket.id}`);
+  // Listen for chart updates
+  socket.on('chart_updated', () => {
+    // Notify other sockets of update
+    socket.broadcast.emit('update_chart');
+  });
 });
  
 //----- Connection
