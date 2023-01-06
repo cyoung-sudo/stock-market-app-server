@@ -7,9 +7,12 @@ const StockDataAPI = require("../apis/StockDataAPI");
 
 //----- Retrieve weekly data for all chart-stocks
 stockDataRoutes.get("/api/stockData/stocks", (req, res) => {
+  let chartStocks;
+
   // Get all chart-stocks
   ChartStock.find({})
   .then(allDocs => {
+    chartStocks = allDocs;
     let promises = [];
     let delay = 1000; // delay to minimize requests/min
 
@@ -34,6 +37,7 @@ stockDataRoutes.get("/api/stockData/stocks", (req, res) => {
     }
     res.json({
       success: true,
+      chartStocks,
       chartData
     })
   })
