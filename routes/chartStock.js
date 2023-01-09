@@ -38,12 +38,22 @@ chartStockRoutes.route("/api/chartStock")
     })
   });
 })
-//----- Delete an existing chart-stock
+//----- Delete a chart-stock
 .delete((req, res) => {
   ChartStock.findOneAndDelete({
     ticker: req.body.ticker
   })
   .then(deleteDoc => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
+});
+
+chartStockRoutes.route("/api/chartStock/all")
+//----- Delete all chart-stocks
+.delete((req, res) => {
+  ChartStock.deleteMany({})
+  .then(delCount => {
     res.json({ success: true });
   })
   .catch(err => console.log(err));
