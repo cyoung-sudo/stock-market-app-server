@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node node_modules/.bin/jest --verbose --watch"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +18,9 @@
     "helmet": "^6.0.1",
     "mongoose": "^6.8.2",
     "socket.io": "^4.5.4"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3"
   }
 }

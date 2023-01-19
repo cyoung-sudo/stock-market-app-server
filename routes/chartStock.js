@@ -1,7 +1,7 @@
 const express = require("express");
 const chartStockRoutes = express.Router();
 // Models
-const ChartStock = require("../models/ChartStockModel");
+const ChartStock = require("../models/chartStockModel");
 
 chartStockRoutes.route("/api/chartStock")
 //----- Create new chart-stock
@@ -50,6 +50,17 @@ chartStockRoutes.route("/api/chartStock")
 });
 
 chartStockRoutes.route("/api/chartStock/all")
+//----- Retrieve all chart-stocks
+.get((req, res) => {
+  ChartStock.find({})
+  .then(chartStocks => {
+  res.json({
+      success: true,
+      chartStocks
+    })
+  })
+  .catch(err => console.log(err));
+})
 //----- Delete all chart-stocks
 .delete((req, res) => {
   ChartStock.deleteMany({})
